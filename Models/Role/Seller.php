@@ -1,7 +1,5 @@
 <?php
 namespace Models\Role;
-require __DIR__ . '/../../vendor/autoload.php';
-
 class Seller extends RoleModel {
     public function __construct($identifier, $name, $address = null, $personInCharge = null, $telephoneNumber = null, $facsimileNumber = null, $emailAddress = null, $customerNumber = null, $roleRemark = null) {
         $this->identifier = $identifier;
