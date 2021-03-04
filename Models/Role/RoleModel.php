@@ -1,7 +1,5 @@
 <?php
 namespace Models\Role;
-require __DIR__ . '/../../vendor/autoload.php';
-
 class RoleModel {
     protected $identifier;
     protected $name;
