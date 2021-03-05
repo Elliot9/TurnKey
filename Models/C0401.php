@@ -3,6 +3,19 @@ namespace Models;
 use Models\Role\Buyer;
 use Models\Role\Seller;
 
+const CHECKNUMBER_WITH_TRADITIONAL_INVOICE = 'P';
+const BUYERREMARK_DEDUCTIBLE_PURCHASES_AND_EXPENSES = '1';
+const BUYERREMARK_DEDUCTIBLE_FIXED_ASSETS = '2';
+const BUYERREMARK_NON_DEDUCTIBLE_PURCHASES_AND_EXPENSES = '3';
+const BUYERREMARK_NON_DEDUCTIBLE_FIXED_ASSETS = '4';
+const CUSTOMSCLEARANCEMARK_NON_EXPORT = '1';
+const CUSTOMSCLEARANCEMARK_EXPORT = '2';
+const INVOICE_TYPE_NORMAL = '07';
+const INVOICE_TYPE_SPECIAL = '08';
+const DONATEMARK_DONT_DONATE = '0';
+const DONATEMARK_DONATE = '1';
+
+
 class C0401 {
 
     /**
@@ -11,9 +24,14 @@ class C0401 {
     private $invoiceNumber;
 
     /**
-     * 列印時間
+     * 發票日期
      */
-    private $printTime;
+    private $invoiceDate;
+
+    /**
+     * 發票時間
+     */
+    private $invoiceTime;
 
     /**
      * 賣家
@@ -26,15 +44,10 @@ class C0401 {
     private Buyer $buyer;
 
     /**
-     * 格式 統編25
-     */
-    private $fixtext;
-
-    /**
-     * (可省) 發票檢查碼 電子發票不填，傳統發票必填P
+     * (可省) 發票檢查碼
+     * 電子發票不填，傳統發票必填 P
      */
     private $checkNumber;
-
 
     /**
      *  (可省) 買受人註記欄
@@ -46,7 +59,9 @@ class C0401 {
     private $buyerRemark;
 
     /**
-     * (可省) 總備註 本欄位應依稅法或其他規定填列應載明事項
+     * (可省) 總備註
+     * 本欄位應依稅法或其他規定填列應載明事項
+     * 填列衛生福利部食品追溯追蹤管理資訊系統「產品追溯系統串接碼」，本欄請填：{FDA}，含前後半型括號 2 碼及大寫半型英文字 3 碼，並於商品項目資料之單一欄位備註填列「產品追溯系統串接碼
      */
     private $mainRemark;
 
@@ -75,7 +90,8 @@ class C0401 {
     private $invoiceType;
 
     /**
-        (可省) 彙開註記 以 * 表示 彙開
+     * (可省) 彙開註記
+     * 以 * 表示 彙開
      */
     private $groupMark;
 
